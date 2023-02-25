@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 2f);
         rb = GetComponent<Rigidbody2D>();
         var rot = transform.rotation;
-        transform.rotation = rot * Quaternion.Euler(0, 0, Random.Range(-spreadFactor, spreadFactor)); // t$$anonymous$$s is 90 degrees around y axis
+        transform.rotation = rot * Quaternion.Euler(0, 0, Random.Range(-spreadFactor, spreadFactor));
     }
 
     // Update is called once per frame
