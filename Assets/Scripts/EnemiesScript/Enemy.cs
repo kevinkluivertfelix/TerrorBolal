@@ -16,13 +16,13 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = -transform.right * enemySpeed;
+        rb.velocity = -transform.right * enemySpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.layer == 8)
         {
-            Debug.Log("colidiu");
+            gameObject.SetActive(false);
         }
     }
 }

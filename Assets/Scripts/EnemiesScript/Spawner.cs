@@ -4,33 +4,44 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private int totalEnemiesToSpawn;
-    public List<GameObject> enemiesList = new List<GameObject>();
-    public bool canSpawn;
-
-    public float timerBetweenSpawn;
-    private float timeCount;
-
-    
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private int sizeOfPool;
+    [SerializeField] private List<GameObject> enemiesPoolList = new List<GameObject>();
+    [SerializeField] private float timeToSpawn;
+    private float time;
+    private PoolingManager pooling;
 
     private void Start()
     {
-        canSpawn = true;
+        pooling = PoolingManager.instance;
+        pooling.ObjectPooling(enemiesPoolList, enemyPrefab, sizeOfPool);
     }
 
     private void Update()
     {
-        timeCount += Time.deltaTime;
+        time += Time.deltaTime;
+        SpawnTimer();
+    }
 
-        if(timeCount >= timerBetweenSpawn && canSpawn)
+
+    void SpawnTimer()
+    {
+        if (time >= timeToSpawn)
         {
             SpawnEnemy();
-            timeCount = 0f;
+            time = 0f;
         }
     }
 
-    void SpawnEnemy()
+    private void SpawnEnemy()
     {
-        Instantiate(enemiesList[Random.Range(0, enemiesList.Count)], transform.position + new Vector3(0,Random.Range(-4f,3f), 0), transform.rotation);
+        GameObject enemyPrefab = pooling.GetPooledObjects(enemiesPoolList);
+
+        if (enemyPrefab == null)
+            return;
+
+        enemyPrefab.transform.position = new Vector2(gameObject.transform.position.x, Random.Range(-3.5f, 3.5f));
+        enemyPrefab.transform.rotation = gameObject.transform.rotation;
+        enemyPrefab.SetActive(true);
     }
 }
