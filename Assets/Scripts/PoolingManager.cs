@@ -11,13 +11,8 @@ public class PoolingManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
         pool = new GameObject("Pool");
     }
-
     //pooling
 
     public void ObjectPooling(List<GameObject> poolList, GameObject Prefab, int poolSize)
