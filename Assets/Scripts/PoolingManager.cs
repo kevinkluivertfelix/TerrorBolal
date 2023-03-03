@@ -5,23 +5,20 @@ using UnityEngine;
 public class PoolingManager : MonoBehaviour
 {
     public static PoolingManager instance;
-
-    GameObject pool;
     
     private void Awake()
     {
         instance = this;
-        pool = new GameObject("Pool");
     }
     //pooling
 
-    public void ObjectPooling(List<GameObject> poolList, GameObject Prefab, int poolSize)
+    public void ObjectPooling(List<GameObject> poolList, GameObject Prefab, GameObject Pool, int poolSize)
     {
         poolList.Clear();
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject p = Instantiate(Prefab, pool.transform);
+            GameObject p = Instantiate(Prefab, Pool.transform);
             p.SetActive(false);
 
             poolList.Add(p);

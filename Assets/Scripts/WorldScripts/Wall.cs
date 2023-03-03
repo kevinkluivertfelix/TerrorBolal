@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public int wallHealth;
-    public void WallTakeDamage(int damage)
+    public void WallHit(int damage)
     {
         wallHealth -= damage;
     }

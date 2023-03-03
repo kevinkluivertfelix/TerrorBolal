@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.layer == 8)
         {
             gameObject.SetActive(false);
+            other.gameObject.GetComponent<Wall>().WallHit(enemyDamage);
         }
     }
 }

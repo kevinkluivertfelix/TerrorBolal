@@ -10,11 +10,17 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float timeToSpawn;
     private float time;
     private PoolingManager pooling;
+    GameObject enemyPool;
+
+    private void Awake()
+    {
+        enemyPool = new GameObject("EnemyPool");
+    }
 
     private void Start()
     {
         pooling = PoolingManager.instance;
-        pooling.ObjectPooling(enemiesPoolList, enemyPrefab, sizeOfPool);
+        pooling.ObjectPooling(enemiesPoolList, enemyPrefab, enemyPool, sizeOfPool);
     }
 
     private void Update()

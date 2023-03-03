@@ -6,18 +6,18 @@ public class WeaponManager : MonoBehaviour
 {
     public GameObject[] weapons;
     private int index;
-    public float switchDelay = 1f;
+    public float switchDelay = 0.2f;
     private bool isSwitching;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //intializeWeapons();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Q)  && !isSwitching)
+        if(Input.GetKey(KeyCode.E)  && !isSwitching)
         {
             index++;
             if(index >= weapons.Length)
@@ -27,7 +27,7 @@ public class WeaponManager : MonoBehaviour
 
             StartCoroutine(switchWeaponDelay(index));
         } 
-        else if(Input.GetKey(KeyCode.E) && !isSwitching)
+        else if(Input.GetKey(KeyCode.Q) && !isSwitching)
         {
             index--;
             if(index < 0)
