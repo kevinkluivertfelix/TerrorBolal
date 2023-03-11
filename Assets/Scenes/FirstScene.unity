@@ -352,7 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2545607e26899348b67ba5754b1b823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallHealth: 100
+  currentHealth: 0
+  maxHealth: 0
 --- !u!1 &241665811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1478488094
 Transform:
   m_ObjectHideFlags: 0
@@ -1210,9 +1211,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3721870867718493881, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721870867718493881, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721870867718493881, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.08995342
+      objectReference: {fileID: 0}
     - target: {fileID: 3721870867718493882, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: Damage
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721870867718493882, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
+      propertyPath: damage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3721870867718493882, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: rateOfFire
@@ -1228,11 +1245,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3721870867945656821, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3721870867945656827, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: Damage
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721870867945656827, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
+      propertyPath: damage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3721870867945656827, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: sizeOfPool
@@ -1240,11 +1261,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3721870868077634734, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3721870868077634771, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: Damage
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721870868077634771, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3721870868077634771, guid: e40ff0b39dce4f645ba7c8a1c66b124f, type: 3}
       propertyPath: rateOfFire

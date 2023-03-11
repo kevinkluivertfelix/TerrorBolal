@@ -6,10 +6,11 @@ public class Gun : MonoBehaviour
 {
 
     [Header("Gun")]
-    [SerializeField] private int Damage;
+    [SerializeField] private int damage;
     [SerializeField] private float spread;
     [SerializeField] private int magazine;
     [SerializeField] private GameObject bulletPrefab;
+    private Bullet bullet;
     [SerializeField] private Transform[] shootPoint;
     public float rateOfFire;
     [SerializeField] private bool canFire;
@@ -23,45 +24,33 @@ public class Gun : MonoBehaviour
     void Awake()
     {
         bulletPool = new GameObject(this.gameObject.name + "BulletPool");
+        bullet = bulletPrefab.GetComponent<Bullet>();
     }
 
+    private void OnEnable()
+    { 
+        bullet.spreadFactor = spread;
+        bullet.damage = damage;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         pooling = PoolingManager.instance;
         pooling.ObjectPooling(BulletPoolList, bulletPrefab, bulletPool, sizeOfPool);
-
-        bulletPrefab.GetComponent<Bullet>().spreadFactor = spread;
-        bulletPrefab.GetComponent<Bullet>().damage = Damage;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Fire();
         CanFire();
 
         if (Time.time > nextfire && Input.GetMouseButton(0) && canFire)
         {
             nextfire = Time.time + rateOfFire;
-            FireTwo();
+            Fire();
         }
     }
-
     private void Fire()
-    {
-        if (Input.GetMouseButton(0) && canFire)
-        {
-            canFire = false;
-            foreach (var item in shootPoint)
-            {
-                Instantiate(bulletPrefab, item.position, item.rotation);
-            }
-        }
-    }
-
-    private void FireTwo()
     {
         for (int i = 0; i < shootPoint.Length; i++)
         {
@@ -69,12 +58,11 @@ public class Gun : MonoBehaviour
 
             if (bulletPrefab == null)
                 return;
-            
+
             bulletPrefab.transform.position = shootPoint[i].transform.position;
             bulletPrefab.transform.rotation = shootPoint[i].transform.rotation;
             bulletPrefab.SetActive(true);
         }
-
     }
 
     private void CanFire()

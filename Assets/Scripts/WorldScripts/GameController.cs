@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        healthText.text = _wall.wallHealth.ToString();
+        healthText.text = _wall.currentHealth.ToString();
     }
 
 }

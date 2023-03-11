@@ -7,7 +7,6 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float spreadFactor;
     public int damage;
-    private float angleMod;
     private Rigidbody2D rb;
 
     private void Awake()
@@ -34,5 +33,18 @@ public class Bullet : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
+    }
+
+    public void Hit()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.GetComponent<Enemy>())
+        {
+            other.GetComponent<Enemy>().ApplyDamage(damage);
+            Hit();
+        }
     }
 }
